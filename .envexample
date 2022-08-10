@@ -1,0 +1,7 @@
+ELASTIC_URL=<elastic Host>
+ELASTIC_USERNAME=<elastic Username>
+ELASTIC_PASSWORD=<elastic Password>
+ELASTIC_INDEX=<elastic Index>
+
+TELEGRAM_TOKEN=<TOKEN BOT>
+TELEGRAM_CHAT_ID=<Telegram Chat ID>

@@ -55,17 +55,17 @@ async function run() {
       },
     },
     size: count.count,
-    sort: [{ timestamp: {} }],
+    sort: [{ Timestamp: {} }],
   });
 
   if (itung != count.count || itung > count.count) {
     bot.sendMessage(
       chatId,
-      `CPU USAGE DARI SERVICE ${getQuery.hits.hits
+      `[${getQuery.hits.hits
         .slice(-1)
-        .map((item) => item._source.alert_id)} MENCAPAI ${getQuery.hits.hits
+        .map((item) => item._source.Condition)}] ${getQuery.hits.hits
         .slice(-1)
-        .map((item) => item._source.value)}`
+        .map((item) => item._source.Reason)}`
     );
     console.log("Ada data baru dan kirim pesan");
   } else {

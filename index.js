@@ -55,17 +55,21 @@ async function run() {
       },
     },
     size: count.count,
-    sort: [{ Timestamp: {} }],
+    sort: [
+      {
+        Timestamp: {
+          order: "desc",
+        },
+      },
+    ],
   });
 
   if (itung != count.count || itung > count.count) {
     bot.sendMessage(
       chatId,
-      `[${getQuery.hits.hits
-        .slice(-1)
-        .map((item) => item._source.Condition)}] ${getQuery.hits.hits
-        .slice(-1)
-        .map((item) => item._source.Reason)}`
+      `[${getQuery.hits.hits.map((item) => item._source.Condition)[0]}] ${
+        getQuery.hits.hits.map((item) => item._source.Reason)[0]
+      }`
     );
     console.log("Ada data baru dan kirim pesan");
   } else {
@@ -77,8 +81,7 @@ async function run() {
   //BUAT DEBUG
   //=============
   // const lastItem = getQuery.hits.hits
-  //   .map((item) => item._source.value)
-  //   .slice(-1);
+  //   .map((item) => item._source.value)[0];
 
   // console.log(lastItem);
 }

@@ -26,9 +26,9 @@ const chatId = process.env.TELEGRAM_CHAT_ID;
 /// CRON JOB SETIAP 1 MENIT
 ///=================
 
-const task = cron.schedule("* * * * *", () => {
-  run().catch(console.log);
-});
+// const task = cron.schedule("* * * * *", () => {
+//   run().catch(console.log);
+// });
 
 var itung = 0;
 ///==================
@@ -57,7 +57,7 @@ async function run() {
     size: count.count,
     sort: [
       {
-        Timestamp: {
+        timestamp: {
           order: "desc",
         },
       },
@@ -67,9 +67,7 @@ async function run() {
   if (itung != count.count || itung > count.count) {
     bot.sendMessage(
       chatId,
-      `[${getQuery.hits.hits.map((item) => item._source.Condition)[0]}] ${
-        getQuery.hits.hits.map((item) => item._source.Reason)[0]
-      }`
+      `${getQuery.hits.hits.map((item) => item._source.statusMessage)[0]}`
     );
     console.log("Ada data baru dan kirim pesan");
   } else {
@@ -80,14 +78,13 @@ async function run() {
   //=============
   //BUAT DEBUG
   //=============
-  // const lastItem = getQuery.hits.hits
-  //   .map((item) => item._source.value)[0];
+  const lastItem = getQuery.hits.hits.map((item) => item._source)[0];
 
-  // console.log(lastItem);
+  console.log(lastItem);
 }
 
-task.start();
+// task.start();
 //=============
 //BUAT DEBUG
 //=============
-// run().catch(console.log);
+run().catch(console.log);

@@ -26,9 +26,9 @@ const chatId = process.env.TELEGRAM_CHAT_ID;
 /// CRON JOB SETIAP 1 MENIT
 ///=================
 
-// const task = cron.schedule("* * * * *", () => {
-//   run().catch(console.log);
-// });
+const task = cron.schedule("* * * * *", () => {
+  run().catch(console.log);
+});
 
 var itung = 0;
 ///==================
@@ -78,13 +78,13 @@ async function run() {
   //=============
   //BUAT DEBUG
   //=============
-  const lastItem = getQuery.hits.hits.map((item) => item._source)[0];
+  // const lastItem = getQuery.hits.hits.map((item) => item._source)[0];
 
-  console.log(lastItem);
+  // console.log(lastItem);
 }
 
-// task.start();
+task.start();
 //=============
 //BUAT DEBUG
 //=============
-run().catch(console.log);
+// run().catch(console.log);
